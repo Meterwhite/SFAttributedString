@@ -1,6 +1,6 @@
 
 ![Logo](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/Label.png)
-===
+---
 ## FIRST
 * This is by far the most leveraged way to output `NSAttributedString`, and it is also the simplest way. The learning cost is 0 and the amount of code is 0.
 * like like like, luck luck luck
@@ -18,8 +18,9 @@ pod 'SFAttributedStringSwift'
 ```
 
 ## Simple format attributed string
-- > The picture below is the output of our very intuitive string `[A]Privacy Policy[B] and [A]Terms of Use`
+- The picture below is the output of our very intuitive string `[A]Privacy Policy[B] and [A]Terms of Use`
     >> 下方图片是我们这段非常直观的字符串`[A]Privacy Policy[B] and [A]Terms of Use`的输出
+    
 ![SFAttributedString icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/EXP.png)
 
 ### Format in string(字符串中的格式)
@@ -61,7 +62,8 @@ let unformattedString = <SFAttributedString>.sf_unformattedString
 ### XIB supported
 ![IBInspectable icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/IBEditor.png)
 
-===
+---
+
 ## ?
 - > Increase the cache mechanism, more efficient
     >> 增加缓存机制，更加高效
