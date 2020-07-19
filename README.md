@@ -58,6 +58,9 @@ NSString *unformattedString = <SFAttributedString>.sf_unformattedString;
 let unformattedString = <SFAttributedString>.sf_unformattedString
 ```
 
+### XIB supported
+![IBInspectable icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/IBEditor.png)
+
 ===
 ## ?
 - > Increase the cache mechanism, more efficient
