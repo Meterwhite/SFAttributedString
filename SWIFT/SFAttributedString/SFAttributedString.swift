@@ -1,6 +1,6 @@
 //
 //  SFAttributedString.swift
-//  SFAttributedStringSwift
+//  SFAttributedString
 //
 //  Created by MeterWhite on 2020/7/18.
 //  Copyright © 2020 Meterwhite. All rights reserved.
@@ -17,14 +17,7 @@ public extension String {
         return SFAtStringCore.unformatted(string: self)
     }
 }
-//public extension String {
-//    func sf_evalString() -> NSAttributedString? {
-//        return SFAtStringCore.eval(script: self)
-//    }
-//    func sf_unformattedString() -> String? {
-//        return SFAtStringCore.unformatted(string: self)
-//    }
-//}
+
 // MARK: - SFAtStringCore
 public struct SFAtStringCore {
     public static func registerAttributes(_ adic: [NSAttributedString.Key : Any], forLabel lb:String) {

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "SFAttributedString"
   s.version      = "1.0.0"
-  s.summary      = "This is by far the most leveraged way to output `NSAttributedString`, and it is also the simplest way. The learning cost is 0 and the amount of code is 0."
+  s.summary      = "This is by far the most leveraged way to output `NSAttributedString`."
   s.homepage     = "https://github.com/Meterwhite/SFAttributedString"
   s.license      = "MIT"
   s.author       = { "Meterwhite" => "meterwhite@outlook.com" }
@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.requires_arc  = true
   s.framework  	  = "UIKit"
   
-  s.ios.deployment_target = "7.0"
-  s.osx.deployment_target = "10.9"
+  s.ios.deployment_target     = "7.0"
+  s.osx.deployment_target 	  = "10.9"
   s.watchos.deployment_target = "2.0"
-  s.tvos.deployment_target = "9.0"
+  s.tvos.deployment_target    = "9.0"
 end
