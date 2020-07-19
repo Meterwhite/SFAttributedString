@@ -18,9 +18,12 @@ pod 'SFAttributedStringSwift'
 ```
 
 ## Simple format attributed string
-- The picture below is the output of our very intuitive string `[A]Privacy Policy[B] and [A]Terms of Use`
-    >> 下方图片是我们这段非常直观的字符串`[A]Privacy Policy[B] and [A]Terms of Use`的输出
-    
+- The picture below is the output of this very intuitive string
+    >> 下方图片是这段非常直观的字符串的输出
+- objc
+```
+label.attributedText = @"[A]Privacy Policy[B] and [A]Terms of Use".sf_evalString;⤵️
+```
 ![SFAttributedString icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/EXP.png)
 
 ### Format in string(字符串中的格式)
