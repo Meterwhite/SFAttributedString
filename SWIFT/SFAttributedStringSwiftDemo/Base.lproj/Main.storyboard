@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SFAttributedStringSwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohm-vq-bca">
+                                <rect key="frame" x="16" y="161" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="sf_text" value="[A]Privacy Policy[B] and [A]Terms of Use"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zpj-u0-Eyv">
+                                <rect key="frame" x="16" y="201.5" width="382" height="34"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="sf_title_default" value="[A]Privacy Policy[B] and [A]Terms of Use"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="sf_title_highlighted" value="[A1]Privacy Policy[B] and [A1]Terms of Use"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sxe-eK-DUD">
+                                <rect key="frame" x="16" y="255.5" width="382" height="80"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Bdg-FA-SmR"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="sf_text" value="[A]Privacy Policy[B] and[A][X][B][XX]][[[[[[]][XX [A]Terms of Use"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hc8-yq-nu6">
+                                <rect key="frame" x="16" y="355.5" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="sf_text" value="[A]Privacy Policy[B] and[A][X][B][XX]][[[[[[]][XX [A]Terms of Use"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbf-9I-IKr">
+                                <rect key="frame" x="16" y="409.5" width="382" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ohm-vq-bca" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.382" id="1XZ-bB-Jii"/>
+                            <constraint firstItem="Zpj-u0-Eyv" firstAttribute="centerX" secondItem="ohm-vq-bca" secondAttribute="centerX" id="7kp-5t-FKo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zpj-u0-Eyv" secondAttribute="trailing" constant="16" id="897-ut-d3F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hc8-yq-nu6" secondAttribute="trailing" constant="16" id="8KQ-Pm-E6S"/>
+                            <constraint firstItem="sxe-eK-DUD" firstAttribute="top" secondItem="Zpj-u0-Eyv" secondAttribute="bottom" constant="20" id="9b3-Ba-CtF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dbf-9I-IKr" secondAttribute="trailing" constant="16" id="ALE-L3-jpx"/>
+                            <constraint firstItem="sxe-eK-DUD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GEo-0k-YDY"/>
+                            <constraint firstItem="hc8-yq-nu6" firstAttribute="top" secondItem="sxe-eK-DUD" secondAttribute="bottom" constant="20" id="GZR-M4-1bZ"/>
+                            <constraint firstItem="Zpj-u0-Eyv" firstAttribute="top" secondItem="ohm-vq-bca" secondAttribute="bottom" constant="20" id="HeS-7E-KMh"/>
+                            <constraint firstItem="Dbf-9I-IKr" firstAttribute="top" secondItem="hc8-yq-nu6" secondAttribute="bottom" constant="20" id="KVX-uX-rb5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ohm-vq-bca" secondAttribute="trailing" constant="16" id="KZj-Dw-qfV"/>
+                            <constraint firstItem="hc8-yq-nu6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="OJe-rV-hIU"/>
+                            <constraint firstItem="Zpj-u0-Eyv" firstAttribute="centerX" secondItem="sxe-eK-DUD" secondAttribute="centerX" id="Rwt-02-Tyg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sxe-eK-DUD" secondAttribute="trailing" constant="16" id="TYy-SU-wAA"/>
+                            <constraint firstItem="ohm-vq-bca" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="cBY-cU-HIc"/>
+                            <constraint firstItem="Dbf-9I-IKr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="n9p-Bj-wdc"/>
+                            <constraint firstItem="Zpj-u0-Eyv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="rJV-x7-pk8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="bt" destination="Zpj-u0-Eyv" id="Epi-Uf-SRC"/>
+                        <outlet property="lb" destination="ohm-vq-bca" id="aec-iW-piI"/>
+                        <outlet property="lb2" destination="Dbf-9I-IKr" id="YT9-ft-FW6"/>
+                        <outlet property="txtfd" destination="hc8-yq-nu6" id="3C3-CS-xoa"/>
+                        <outlet property="txtv" destination="sxe-eK-DUD" id="d4B-4d-rBj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-73"/>
+        </scene>
+    </scenes>
+</document>
