@@ -5,7 +5,7 @@
 * This is by far the most leveraged way to output `NSAttributedString`, and it is also the simplest way. The learning cost is 0 and the amount of code is 0.
 * like like like, luck luck luck
 * 这是迄今为止输出`NSAttributedString`杠杆最高的方式，也是最简单的方式，学习成本为0，代码量为0.
-* 随手这一赞，好运上百万
+* 随手赞一赞，好运上百万
 
 ## CocoaPods
 - objc
@@ -41,7 +41,7 @@ label.attributedText = @"[A]Privacy Policy[B] and [A]Terms of Use".sf_evalString
 
 ```
     
-### Registered attributed string label
+### Registered attributed string label(注册标签)
 - All attribute labels need to be registered before use
 - objc
 ```objc
@@ -52,7 +52,7 @@ label.attributedText = @"[A]Privacy Policy[B] and [A]Terms of Use".sf_evalString
 SFAtStringCore.registerAttributes(<UserAttributedDictionary>,forLabel:"LABEL")
 ```
 
-### Unformatted string
+### Unformatted string(反格式化)
 - objc
 ```objc
 NSString *unformattedString = <SFAttributedString>.sf_unformattedString;
@@ -62,7 +62,7 @@ NSString *unformattedString = <SFAttributedString>.sf_unformattedString;
 let unformattedString = <SFAttributedString>.sf_unformattedString
 ```
 
-### XIB supported
+### XIB supported(支持可视化编辑)
 ![IBInspectable icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/IBEditor.png)
 
 ---
