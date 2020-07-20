@@ -8,11 +8,11 @@
 * 随手赞一赞，好运上百万
 
 ## CocoaPods
-- objc
+> objc
 ```
 pod 'SFAttributedString'
 ```
-- swift
+> swift
 ```
 pod 'SFAttributedStringSwift'
 ```
@@ -20,11 +20,28 @@ pod 'SFAttributedStringSwift'
 ## Simple format attributed string
 - The picture below is the output of this very intuitive string
     >> 下方图片是这段非常直观的字符串的输出
-- objc
-```
+```objc
 label.attributedText = @"[A]Privacy Policy[B] and [A]Terms of Use".sf_evalString;⤵️
 ```
 ![SFAttributedString icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/EXP.png)
+
+### WHY?
+ > It is often necessary to think that we are software engineers, not software coders. The most efficient way is to package the difficulties and repeat simple things, rather than repeating it after reducing the difficulties, because this is still repeating difficult things, as is the case with the following open source projects.
+    >> 时常需要思考我们是软件工程师，而不是软件代码师。最高效的方式是将困难打包然后重复简单的事情，而不是将困难减小后再重复它，因为这还是重复困难的事情，下面的开源项目就是如此。
+```swift
+//SJAttributesFactory
+let text = NSAttributedString.sj.makeText { (make) in
+    make.font(.boldSystemFont(ofSize: 20)).textColor(.black).lineSpacing(8)
+    make.append("Hello world!")
+}
+```
+```objc
+//Typeset
+@"Hello".typeset.from(0).to(2).red.string;
+@"Hello".typeset.location(0).length(2).red.string;
+@"Hello".typeset.range(NSMakeRange(0,2)).red.string;
+@"Hello".typeset.match(@"He").red.string;
+```
 
 ### Format in string(字符串中的格式)
 -  `[` + `LABEL`+`]`
@@ -43,21 +60,21 @@ label.attributedText = @"[A]Privacy Policy[B] and [A]Terms of Use".sf_evalString
     
 ### Registered attributed string label(注册标签)
 - All attribute labels need to be registered before use
-- objc
+> objc
 ```objc
 [SFAtStringCore registerAttributes:<UserAttributedDictionary> forLabel:@"LABEL"];
 ```
-- swift
+> swift
 ```swift
 SFAtStringCore.registerAttributes(<UserAttributedDictionary>,forLabel:"LABEL")
 ```
 
 ### Unformatted string(反格式化)
-- objc
+> objc
 ```objc
 NSString *unformattedString = <SFAttributedString>.sf_unformattedString;
 ```
-- swift
+> swift
 ```swift
 let unformattedString = <SFAttributedString>.sf_unformattedString
 ```
