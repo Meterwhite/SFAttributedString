@@ -27,7 +27,7 @@ label.attributedText = @"[A]Privacy Policy[B] and [A]Terms of Use".sf_evalString
 
 ### WHY?
  > It is often necessary to think that we are software engineers, not software coders. The most efficient way is to package the difficulties and repeat simple things, rather than repeating it after reducing the difficulties, because this is still repeating difficult things, as is the case with the following open source projects.
-    >> 时常需要思考我们是软件工程师，而不是软件代码师。最高效的方式是将困难打包然后重复简单的事情，而不是将困难减小后再重复它，因为这还是重复困难的事情，下面的开源项目就是如此。
+ >> 时常需要思考我们是软件工程师，而不是软件代码师。最高效的方式是将困难打包然后重复简单的事情，而不是将困难减小后再重复它，因为这还是重复困难的事情，下面的开源项目就是如此。
 ```swift
 //SJAttributesFactory
 let text = NSAttributedString.sj.makeText { (make) in
