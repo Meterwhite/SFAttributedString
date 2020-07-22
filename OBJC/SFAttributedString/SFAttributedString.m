@@ -1,6 +1,7 @@
 //
 //  SFAttributedString.m
 //  SFAttributedString
+//  https://github.com/Meterwhite/SFAttributedString
 //
 //  Created by MeterWhite on 2020/7/18.
 //  Copyright © 2020 Meterwhite. All rights reserved.
