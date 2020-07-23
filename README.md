@@ -69,14 +69,14 @@ let text = NSAttributedString.sj.makeText { (make) in
 SFAtStringCore.registerAttributes(<UserAttributedDictionary>,forLabel:"LABEL")
 ```
 
-### Unformatted string(反格式化)
+### Unformatted string(还原格式)
 > objc
 ```objc
-NSString *unformattedString = <SFAttributedString>.sf_unformattedString;
+NSString *unformattedString = <String(Formatted)>.sf_unformattedString;
 ```
 > swift
 ```swift
-let unformattedString = <SFAttributedString>.sf_unformattedString
+let unformattedString = <String(Formatted)>.sf_unformattedString
 ```
 
 ### XIB supported(支持可视化编辑)
@@ -85,7 +85,7 @@ let unformattedString = <SFAttributedString>.sf_unformattedString
 ---
 
 ## ?
-- > Increase the cache mechanism, more efficient
-    >> 增加缓存机制，更加高效
+- > Increase the surface cache mechanism, more efficient
+    >> 表层缓存机制，更加高效
 - > Add image attribute labels
     >> 增加图片的属性标签
