@@ -46,10 +46,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"%@",self.txtv.sf_text.sf_unformattedString);
-    
-    [_lb2 setSf_text:@"[A]AAA[B[F[3]]F]X[S[]][B]BBBB[A1]A1A1A1"];
+    NSString *string_sf = @"[A][[!]star]012345[[!]star,0,-5.00,21,21]6789[B]][[][[!]][[[[!]star,0,-5.00,21,21]";
+    NSLog(@"%@",string_sf.sf_unformattedString);
+    [_lb2 setSf_text:string_sf];
 }
 
 
