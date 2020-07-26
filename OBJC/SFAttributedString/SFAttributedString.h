@@ -14,8 +14,10 @@
 
 @interface NSString(SimpleFormatAttributedString)
 
+/// Core
 - (nonnull NSAttributedString *)sf_evalString;
 
+/// No text labels, no image labels
 - (nonnull NSString *)sf_unformattedString;
 
 @end

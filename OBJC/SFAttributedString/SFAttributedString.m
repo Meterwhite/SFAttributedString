@@ -13,7 +13,7 @@
 static NSMutableDictionary  *_cached_lb_adic;
 /// weak(View) : copy(String|Dictionary)
 static NSMapTable           *_cached_v_sftxt;
-static NSRegularExpression  *_rgx_str;
+static NSRegularExpression  *_rgx_txt;
 static NSRegularExpression  *_rgx_img;
 
 /// Return type : NSArray<NSTextCheckingResult*>*
@@ -26,12 +26,12 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
 @interface SFImageLbAttachment : NSTextAttachment
 @property (nonatomic) NSRange   conRange;
 @property (nonatomic) NSInteger offset;
-@property (nonatomic,readonly) NSUInteger insertedIndex;
+@property (nonatomic,readonly) NSUInteger inserdex;
 @end
 
 @implementation SFImageLbAttachment
 
-- (NSUInteger)insertedIndex {
+- (NSUInteger)inserdex {
     return _conRange.location  - _offset;
 }
 
@@ -43,7 +43,7 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
     if(self != SFAtStringCore.class) return;
     _cached_lb_adic = [NSMutableDictionary dictionary];
     _cached_v_sftxt = [NSMapTable mapTableWithKeyOptions:(NSPointerFunctionsWeakMemory|NSPointerFunctionsObjectPersonality) valueOptions:(NSPointerFunctionsCopyIn|NSPointerFunctionsObjectPersonality)];
-    _rgx_str = [NSRegularExpression regularExpressionWithPattern:@"\\[\\w+\\]" options:0 error:nil];
+    _rgx_txt = [NSRegularExpression regularExpressionWithPattern:@"\\[\\w+\\]" options:0 error:nil];
     _rgx_img = [NSRegularExpression regularExpressionWithPattern:@"\\[\\[!\\]\\w+(,(-|\\d|\\.)+)*\\]" options:0 error:nil];
 }
 
@@ -54,7 +54,7 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
 
 + (NSAttributedString *)evalScript:(NSString *)string {
     /// Split image labels, suspend them.(剥离图片标签，挂起图片标签相关信息)
-    NSArray<NSTextCheckingResult *> *cks_txt = [_rgx_str matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    NSArray<NSTextCheckingResult *> *cks_txt = [_rgx_txt matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     NSArray<NSTextCheckingResult *> *cks_img = [_rgx_img matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     NSArray<SFImageLbAttachment *> *img_atms;
     if(cks_img.count) {
@@ -66,7 +66,7 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
         string = mstring.copy;
     }
     /// Here begins to parse the plain text(这里开始解析纯文本)
-    cks_txt = [_rgx_str matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    cks_txt = [_rgx_txt matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     /// Filter invalid labels
     cks_txt = [cks_txt filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSTextCheckingResult *rt, NSDictionary<NSString *,id> * _) {
         return (_cached_lb_adic[[string substringWithRange:rt.range]] != nil);
@@ -103,7 +103,7 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
     /// Append image labels
     if(img_atms.count) {
         for (SFImageLbAttachment *atm in img_atms.reverseObjectEnumerator) {
-            [m_ret insertAttributedString:[NSAttributedString attributedStringWithAttachment:atm] atIndex:atm.insertedIndex];
+            [m_ret insertAttributedString:[NSAttributedString attributedStringWithAttachment:atm] atIndex:atm.inserdex];
         }
     }
     return [m_ret copy];
@@ -111,7 +111,7 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
 
 + (NSString *)unformatted:(NSString *)string {
     NSMutableString                 *ret = [string mutableCopy];
-    NSArray<NSTextCheckingResult *> *cks_txt = [_rgx_str matchesInString:string options:0 range:NSMakeRange(0, string.length)];
+    NSArray<NSTextCheckingResult *> *cks_txt = [_rgx_txt matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     cks_txt = [cks_txt filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSTextCheckingResult *rt, NSDictionary<NSString *,id> * _) {
         return (_cached_lb_adic[[string substringWithRange:rt.range]] != nil);
     }]];

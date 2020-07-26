@@ -44,9 +44,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(txtv.sf_text?.sf_unformattedString as Any)
-        lb2.sf_text = "[A]AAA[B[F[3]]F]X[S[]][B]BBBB[A1]A1A1A1"
+        let sf = "[A][[!]star]012345[[!]star,0,-5.00,21,21]6789[B]][[][[!]][[[[!]star,0,-5.00,21,21]"
+        print(sf.sf_unformattedString as Any)
+        lb2.sf_text = sf
     }
 }
 
