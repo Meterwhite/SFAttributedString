@@ -11,6 +11,8 @@
 @class SFImageLbAttachment;
 /// String : Dictionary
 static NSMutableDictionary  *_cached_lb_adic;
+/// String : NSAttributedString
+static NSMutableDictionary  *_cached_txt_ats;
 /// weak(View) : copy(String|Dictionary)
 static NSMapTable           *_cached_v_sftxt;
 static NSRegularExpression  *_rgx_txt;
@@ -42,6 +44,7 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
 + (void)initialize {
     if(self != SFAtStringCore.class) return;
     _cached_lb_adic = [NSMutableDictionary dictionary];
+    _cached_txt_ats = [NSMutableDictionary dictionary];
     _cached_v_sftxt = [NSMapTable mapTableWithKeyOptions:(NSPointerFunctionsWeakMemory|NSPointerFunctionsObjectPersonality) valueOptions:(NSPointerFunctionsCopyIn|NSPointerFunctionsObjectPersonality)];
     _rgx_txt = [NSRegularExpression regularExpressionWithPattern:@"\\[\\w+\\]" options:0 error:nil];
     _rgx_img = [NSRegularExpression regularExpressionWithPattern:@"\\[\\[!\\]\\w+(,(-|\\d|\\.)+)*\\]" options:0 error:nil];
@@ -53,6 +56,11 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
 }
 
 + (NSAttributedString *)evalScript:(NSString *)string {
+    /// Cached first
+    NSString *k = [string copy];
+    if(_cached_txt_ats[k]) {
+        return _cached_txt_ats[k];
+    }
     /// Split image labels, suspend them.(剥离图片标签，挂起图片标签相关信息)
     NSArray<NSTextCheckingResult *> *cks_txt = [_rgx_txt matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     NSArray<NSTextCheckingResult *> *cks_img = [_rgx_img matchesInString:string options:0 range:NSMakeRange(0, string.length)];
@@ -106,6 +114,7 @@ NSArray *atmsForImgLb(NSString *string, NSArray *cks_txt);
             [m_ret insertAttributedString:[NSAttributedString attributedStringWithAttachment:atm] atIndex:atm.inserdex];
         }
     }
+    _cached_txt_ats[k] = [m_ret copy];
     return [m_ret copy];
 }
 

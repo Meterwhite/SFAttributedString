@@ -47,6 +47,7 @@ class ViewController: UIViewController {
         let sf = "[A][[!]star]012345[[!]star,0,-5.00,21,21]6789[B]][[][[!]][[[[!]star,0,-5.00,21,21]"
         print(sf.sf_unformattedString as Any)
         lb2.sf_text = sf
+        lb2.sf_text = sf
     }
 }
 

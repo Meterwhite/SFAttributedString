@@ -9,6 +9,14 @@
 
 import UIKit
 
+// MARK: - private vars
+fileprivate var cached_txt_ats = Dictionary<String, NSAttributedString>()
+fileprivate var cached_lb_adic = Dictionary<String, [NSAttributedString.Key : Any]>()
+fileprivate var cached_v_sftxt = NSMapTable<UIView, AnyObject>(keyOptions: [.weakMemory, .objectPointerPersonality], valueOptions: [.copyIn, .objectPointerPersonality])
+fileprivate var rgx_txt = try! NSRegularExpression(pattern: "\\[\\w+\\]", options: [])
+fileprivate var rgx_img = try! NSRegularExpression(pattern: "\\[\\[!\\]\\w+(,(-|\\d|\\.)+)*\\]", options: [])
+
+
 // MARK: - Extension for String
 public extension String {
     var sf_evalString : NSAttributedString? {
@@ -26,6 +34,11 @@ public struct SFAtStringCore {
     }
     
     public static func eval(script string:String) -> NSAttributedString? {
+        /// Cached first
+        let k = string
+        if let cached = cached_txt_ats[k] {
+            return cached
+        }
         /// Split image labels, suspend them.(剥离图片标签，挂起图片标签相关信息)
         var string = string
         var cks_txt = rgx_txt.matches(in: string, options: [], range: NSRange(location: 0, length: string.count))
@@ -81,6 +94,7 @@ public struct SFAtStringCore {
                 ret.insert(NSAttributedString(attachment: atm), at: atm.inserdex)
             }
         }
+        cached_txt_ats[k] = ret as NSAttributedString
         return ret as NSAttributedString
     }
     
@@ -106,11 +120,6 @@ public struct SFAtStringCore {
         }
         return ret
     }
-    // MARK: private
-    fileprivate static var cached_lb_adic = Dictionary<String, [NSAttributedString.Key : Any]>()
-    fileprivate static var cached_v_sftxt = NSMapTable<UIView, AnyObject>(keyOptions: [.weakMemory, .objectPointerPersonality], valueOptions: [.copyIn, .objectPointerPersonality])
-    fileprivate static var rgx_txt = try! NSRegularExpression(pattern: "\\[\\w+\\]", options: [])
-    fileprivate static var rgx_img = try! NSRegularExpression(pattern: "\\[\\[!\\]\\w+(,(-|\\d|\\.)+)*\\]", options: [])
 }
 
 // MARK: - IB Inspectable supported
@@ -141,13 +150,13 @@ public extension UITextView {
 public extension UIButton {
     @IBInspectable var sf_title_default : String? {
         get {
-            if let userInfo = SFAtStringCore.cached_v_sftxt.object(forKey: self) as? [UInt : String] {
+            if let userInfo = cached_v_sftxt.object(forKey: self) as? [UInt : String] {
                 return userInfo[UIControl.State.normal.rawValue]
             }
             return nil
         }
         set {
-            let userInfo = SFAtStringCore.cached_v_sftxt.object(forKey: self)
+            let userInfo = cached_v_sftxt.object(forKey: self)
             var udic : [UInt : String]
             if let x = userInfo as? [UInt : String]  {
                 udic = x
@@ -155,19 +164,19 @@ public extension UIButton {
                 udic = [UInt : String]()
             }
             udic[UIControl.State.normal.rawValue] = newValue
-            SFAtStringCore.cached_v_sftxt.setObject(udic as AnyObject?, forKey: self)
+            cached_v_sftxt.setObject(udic as AnyObject?, forKey: self)
             self.setAttributedTitle(newValue?.sf_evalString, for: .normal)
         }
     }
     @IBInspectable var sf_title_highlighted : String? {
         get {
-            if let userInfo = SFAtStringCore.cached_v_sftxt.object(forKey: self) as? [UInt : String] {
+            if let userInfo = cached_v_sftxt.object(forKey: self) as? [UInt : String] {
                 return userInfo[UIControl.State.highlighted.rawValue]
             }
             return nil
         }
         set {
-            let userInfo = SFAtStringCore.cached_v_sftxt.object(forKey: self)
+            let userInfo = cached_v_sftxt.object(forKey: self)
             var udic : [UInt : String]
             if let x = userInfo as? [UInt : String]  {
                 udic = x
@@ -175,19 +184,19 @@ public extension UIButton {
                 udic = [UInt : String]()
             }
             udic[UIControl.State.highlighted.rawValue] = newValue
-            SFAtStringCore.cached_v_sftxt.setObject(udic as AnyObject?, forKey: self)
+            cached_v_sftxt.setObject(udic as AnyObject?, forKey: self)
             self.setAttributedTitle(newValue?.sf_evalString, for: .highlighted)
         }
     }
     @IBInspectable var sf_title_selected : String? {
         get {
-            if let userInfo = SFAtStringCore.cached_v_sftxt.object(forKey: self) as? [UInt : String] {
+            if let userInfo = cached_v_sftxt.object(forKey: self) as? [UInt : String] {
                 return userInfo[UIControl.State.selected.rawValue]
             }
             return nil
         }
         set {
-            let userInfo = SFAtStringCore.cached_v_sftxt.object(forKey: self)
+            let userInfo = cached_v_sftxt.object(forKey: self)
             var udic : [UInt : String]
             if let x = userInfo as? [UInt : String]  {
                 udic = x
@@ -195,19 +204,19 @@ public extension UIButton {
                 udic = [UInt : String]()
             }
             udic[UIControl.State.selected.rawValue] = newValue
-            SFAtStringCore.cached_v_sftxt.setObject(udic as AnyObject?, forKey: self)
+            cached_v_sftxt.setObject(udic as AnyObject?, forKey: self)
             self.setAttributedTitle(newValue?.sf_evalString, for: .selected)
         }
     }
     @IBInspectable var sf_title_disabled : String? {
         get {
-            if let userInfo = SFAtStringCore.cached_v_sftxt.object(forKey: self) as? [UInt : String] {
+            if let userInfo = cached_v_sftxt.object(forKey: self) as? [UInt : String] {
                 return userInfo[UIControl.State.disabled.rawValue]
             }
             return nil
         }
         set {
-            let userInfo = SFAtStringCore.cached_v_sftxt.object(forKey: self)
+            let userInfo = cached_v_sftxt.object(forKey: self)
             var udic : [UInt : String]
             if let x = userInfo as? [UInt : String]  {
                 udic = x
@@ -215,7 +224,7 @@ public extension UIButton {
                 udic = [UInt : String]()
             }
             udic[UIControl.State.disabled.rawValue] = newValue
-            SFAtStringCore.cached_v_sftxt.setObject(udic as AnyObject?, forKey: self)
+            cached_v_sftxt.setObject(udic as AnyObject?, forKey: self)
             self.setAttributedTitle(newValue?.sf_evalString, for: .disabled)
         }
     }
@@ -249,10 +258,10 @@ fileprivate class SFImageLbAttachment : NSTextAttachment {
 fileprivate extension UIView {
     @objc var sf_text : String? {
         get {
-            SFAtStringCore.cached_v_sftxt.object(forKey: self) as? String
+            cached_v_sftxt.object(forKey: self) as? String
         }
         set {
-            SFAtStringCore.cached_v_sftxt.setObject(newValue as AnyObject, forKey: self)
+            cached_v_sftxt.setObject(newValue as AnyObject, forKey: self)
         }
     }
 }
@@ -308,12 +317,12 @@ fileprivate func atmsForImgLb(_ string: String,txtCks cks_txt: [NSTextCheckingRe
     var nonTxtLbString = string
     for item in cks_txt.reversed() {
         if let ran = Range<String.Index>.init(item.range, in: string) {
-            if nil != SFAtStringCore.cached_lb_adic[String(nonTxtLbString[ran])] {
+            if nil != cached_lb_adic[String(nonTxtLbString[ran])] {
                 nonTxtLbString.removeSubrange(ran)
             }
         }
     }
-    let cks_img = SFAtStringCore.rgx_img.matches(in: nonTxtLbString, options: [], range: NSRange(location: 0, length: nonTxtLbString.count))
+    let cks_img = rgx_img.matches(in: nonTxtLbString, options: [], range: NSRange(location: 0, length: nonTxtLbString.count))
     for i in 0..<cks_img.count {
         let ck  = cks_img[i]
         let atm = SFImageLbAttachment()
