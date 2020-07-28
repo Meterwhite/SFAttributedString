@@ -26,7 +26,7 @@ label.attributedText = @"[A]Privacy Policy[B] and [A]Terms of Use".sf_evalString
 ![SFAttributedString icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/EXP.png)
 ---
 ```objc
-label.attributedText = @"[A]Give [[!]star] to [B]SFAttributedString".sf_evalString;⤵️
+label.attributedText = @"[B]Give [[!]star] to [A]SFAttributedString".sf_evalString;⤵️
 ```
 ![SFAttributedString icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/TEST_IMG.png)
 
