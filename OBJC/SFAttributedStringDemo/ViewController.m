@@ -46,8 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *string_sf = @"[A]Give [[!]star] to [B]SFAttributedString";
-//    NSString *string_sf = @"[A][[!]star]012345[[!]star,0,-5.00,21,21]6789[B]][[][[!]][[[[!]star,0,-5.00,21,21]";
+    NSString *string_sf = @"[A][[!]star]012345[[!]star,0,-5.00,21,21]6789[B]][[][[!]][[[[!]star,0,-5.00,21,21]";
     NSLog(@"%@",string_sf.sf_unformattedString);
     [_lb2 setSf_text:string_sf];
     [_lb2 setSf_text:string_sf];
