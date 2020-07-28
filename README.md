@@ -24,6 +24,11 @@ pod 'SFAttributedStringSwift'
 label.attributedText = @"[A]Privacy Policy[B] and [A]Terms of Use".sf_evalString;⤵️
 ```
 ![SFAttributedString icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/EXP.png)
+---
+```objc
+label.attributedText = @"[A]Give [[!]star] to [B]SFAttributedString".sf_evalString;⤵️
+```
+![SFAttributedString icon](https://raw.githubusercontent.com/Meterwhite/SFAttributedString/master/TEST_IMG.png)
 
 ### WHY?
  > It is often necessary to think that we are software engineers, not software coders. The most efficient way is to package the difficulties and repeat simple things, rather than repeating it after reducing the difficulties, because this is still repeating difficult things, as is the case with the following open source projects.
@@ -44,10 +49,10 @@ let text = NSAttributedString.sj.makeText { (make) in
 ```
 
 ### Format in string(字符串中的格式)
--  `[` + `LABEL`+`]`
+#### Text label
+-  [  `LABEL`]
     - >Letters, numbers, underscores are allowed
         >> 可以使用字母，数字，下划线
-
 ```swift
 
 "[Normal16]This is[Normal14], SFAttributedString..."
@@ -57,6 +62,16 @@ let text = NSAttributedString.sj.makeText { (make) in
 "[N_0x999999_21]This is[M_0x999999_16], SFAttributedString..."
 
 ```
+#### Image label
+- [[!]`IMAGE NAME`] OR [[!]`IMAGE NAME` `, x ,y ,w ,h` ] 
+```swift
+
+"...[[!]hold_person]..."
+
+"...[[!]hold_person,0,0,15,15]..."
+
+"...[[!]hold_person,0,0,15.00,15.00]..."
+
     
 ### Registered attributed string label(注册标签)
 - All attribute labels need to be registered before use
@@ -85,7 +100,6 @@ let unformattedString = <String(Formatted)>.sf_unformattedString
 ---
 
 ## ?
-- > Increase the surface cache mechanism, more efficient
-    >> 表层缓存机制，更加高效
-- > Add image attribute labels
-    >> 增加图片的属性标签
+> I am a developer from China and want to develop outsourcing projects outside of China.
+> 成都长期求职 meterwhite@outlook.com
+
