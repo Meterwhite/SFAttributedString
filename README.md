@@ -71,7 +71,7 @@ let text = NSAttributedString.sj.makeText { (make) in
 "...[[!]hold_person,0,0,15,15]..."
 
 "...[[!]hold_person,0,0,15.00,15.00]..."
-
+```
     
 ### Registered attributed string label(注册标签)
 - All attribute labels need to be registered before use
